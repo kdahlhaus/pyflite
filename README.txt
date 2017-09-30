@@ -13,7 +13,7 @@ Usage:
 import flite
 flite.init()
 flite.say("Hey! I think our problems may just be solved. Ed McMahon. Think I just won a million bucks. Yeah, Irwin M. Fletcher you choose. Woo-wee! Oh, boy, I lost. Yeah. Sorry.")
-flite.say("My advice to you is...", "test.wav")
+flite.say("My advice to you is...", "test.wav", voice="slt")
 flite.say_ssml("""
     <speak>
         We shall fight on the <emphasis level="strong">beaches</emphasis>
