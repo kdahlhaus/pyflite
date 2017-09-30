@@ -1,0 +1,36 @@
+FLITEDIR=..
+FLITELIBDIR = $(FLITEDIR)/build/i386-cygwin/lib
+FLITELIBS = -lflite_cmu_us_kal16 -lflite_usenglish -lflite_cmulex -lflite -lm -lwinmm 
+# the flite_cmu_us_kal16 sounds a bit beter in my testing
+
+PYTHONDIR = C:/python27
+PYTHONLIBS = -lpython27
+
+PYREXC = $(PYTHONDIR)/python.exe $(PYTHONDIR)/Scripts/pyrexc.py
+
+CFLAGS = -mno-cygwin -Wall -g
+INCLUDES = -I$(FLITEDIR)/include -I$(PYTHONDIR)/include
+LDFLAGS     = -L$(FLITELIBDIR) -L/c/Python27/libs
+
+
+
+all: flite.pyd
+
+test.exe: test.c
+	gcc  $(CFLAGS) -o test test.c $(INCLUDES) -L$(FLITELIBDIR)  $(FLITELIBS)
+
+
+flite.pyd:  flite.c
+	gcc $(CFLAGS)  -shared $(INCLUDES) flite.c   $(LDFLAGS) $(LIBS) $(PYTHONLIBS) $(FLITELIBS)  -oflite.pyd
+
+%.c : %.pyx
+	$(PYREXC) $<
+
+
+.PHONY: clean
+clean:
+	rm -f flite.pyd test.exe *.o flite.c test.wav test.pyc
+
+
+# other flite is compiled with:
+# gcc -mno-cygwin -Wall -DCST_NO_SOCKETS=1    -o ../bin/flite.exe flite_main.o -L ./build/i386-cygwin/lib -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex -L.  /build/i386-cygwin/lib -lflite -lm -lwinmm
