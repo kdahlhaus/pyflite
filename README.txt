@@ -6,9 +6,9 @@ This is a simple cython wrapper for the Flite voice library.
 
 It is minimal, not documented very well, and meets my current needs.  :)
 
-The linux version is building.
+The linux version is building and works well.
 
-The cygwin version worked in 2006, but I have not tried in recently.  If it does not work now, it's very likely that the linux version would work with a slight modificaiton.
+The cygwin version worked in 2006, but I have not tried in recently.  If it does not work now, it's very likely that the linux version would work with a slight modification.
 
 
 
@@ -24,7 +24,7 @@ flite.say("Hey! I think our problems may just be solved. Ed McMahon. Think I jus
 # write the speech to 'test.wav' using the CMU 'slt' voice
 flite.say("My advice to you is...", "test.wav", voice="slt")
 
-# say the SSML data
+# speak the SSML data via alsa
 flite.say_ssml("""
     <speak>
         We shall fight on the <emphasis level="strong">beaches</emphasis>
