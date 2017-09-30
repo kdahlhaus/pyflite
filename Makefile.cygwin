@@ -1,3 +1,6 @@
+# This is old and may not work with new versions of Flite
+# It will be updated when work on Windows resumes.
+#
 FLITEDIR=..
 FLITELIBDIR = $(FLITEDIR)/build/i386-cygwin/lib
 FLITELIBS = -lflite_cmu_us_kal16 -lflite_usenglish -lflite_cmulex -lflite -lm -lwinmm 

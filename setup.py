@@ -1,3 +1,9 @@
+# This is an intial setup.py for building the extension
+# against Flite 2.0.  It needs a bit of work as there
+# are some undefined symbols when you load the python
+# module.  The Makefile.linux may shed some light on the
+# problem as that works.
+
 from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Build import cythonize

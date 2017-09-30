@@ -1,13 +1,7 @@
-pyFlite (C) 2006 by Kevin Dahlhausen  kpd@powertwenty.com
+pyFlite (C) 2006, 2017 by Kevin Dahlhausen  kpd@powertwenty.com
 
-See the file 'COPYING' for license information. ( basically, same as Flite, free for all uses)
+See the file 'COPYING' for license information. (Same license as Flite, free for all uses)
 
-This is a wrapper for the Flite voice library.
+This is a simple cython wrapper for the Flite voice library. 
 
-Sorry about the lack of setup.py script.
-
-Just ensure cygwin is installed and run make.
-Then put flite.pyd somewhere on your python path.
-
-
-
+It is minimal, not documented very well, and meets my current needs.  :)
