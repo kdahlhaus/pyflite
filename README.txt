@@ -11,6 +11,15 @@ The linux version is building and works well.
 The cygwin version worked in 2006, but I have not tried in recently.  If it does not work now, it's very likely that the linux version would work with a slight modification.
 
 
+Building under WindowS:
+install MS Build Tools for VS 14 (python 3.6)
+install flite-2.0.0-release somewhere (no need to build)
+set env var to the flite-2.0.0-release dir 
+python setup.py build
+
+
+
+
 
 Usage:
 
