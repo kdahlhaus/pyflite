@@ -7,7 +7,7 @@ This is a simple cython wrapper for the Flite voice library.
 It is minimal, not documented very well, and meets my current needs.  :)
 
 On debian/unbuntu/raspbian, the following libs are needed:
-apt install flite libflite1 flite1-dev cython3 python3-dev
+apt install flite libflite1 flite1-dev cython3 python3-dev libasound2-dev
 
 Then rename the Makefile of your platform (e.g. Makefile.raspbian) to Makefile
 
