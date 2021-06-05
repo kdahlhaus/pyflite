@@ -6,12 +6,17 @@ This is a simple cython wrapper for the Flite voice library.
 
 It is minimal, not documented very well, and meets my current needs.  :)
 
+On debian/unbuntu/raspbian, the following libs are needed:
+apt install flite libflite1 flite1-dev cython3 python3-dev
+
+Then rename the Makefile of your platform (e.g. Makefile.raspbian) to Makefile
+
 The linux version is building and works well.
 
 The cygwin version worked in 2006, but I have not tried in recently.  If it does not work now, it's very likely that the linux version would work with a slight modification.
 
 
-Building under WindowS:
+Building under Windows:
 install MS Build Tools for VS 14 (python 3.6)
 install flite-2.0.0-release somewhere (no need to build)
 set env var to the flite-2.0.0-release dir 
