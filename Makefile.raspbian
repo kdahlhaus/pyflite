@@ -1,0 +1,23 @@
+FLITEICLUDEDIR=/usr/include/flite
+FLITELIBDIR=/usr/lib/arm-linux-gnueabihf
+FLITELIBS = -lflite -lflite_cmu_grapheme_lang -lflite_cmu_grapheme_lex -lflite_cmu_indic_lang -lflite_cmu_indic_lex -lflite_cmulex -lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_rms -lflite_cmu_us_kal -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish
+
+PYTHONINCLUDEDIR=/usr/include/python3.7m
+
+LDFLAGS = -Xlinker -no-as-needed -L$(FLITELIBDIR) $(FLITELIBS)
+
+all:
+	cython3 -2 flite.pyx -o flite.c
+	#gcc -shared -pthread -fPIC -fwrapv -O2 -Wall -fno-strict-aliasing -I$(PYTHONINCLUDEDIR) -I$(FLITEICLUDEDIR) $(LDFLAGS) -o flite.so flite.c
+	#gcc -c -pthread -fPIC -fwrapv -O2 -Wall -fno-strict-aliasing -I$(PYTHONINCLUDEDIR) -I$(FLITEICLUDEDIR) $(LDFLAGS) -o flite.o flite.c
+	#gcc  -Wl,--no-as-needed -shared -o flite.so flite.o $(LDFLAGS)
+	gcc -fPIC -shared -Wall -g -o flite.so flite.c -I$(FLITEICLUDEDIR) -I$(PYTHONINCLUDEDIR) -L$(FLITELIBDIR) -lflite_cmu_us_rms -lflite_usenglish -lflite_cmulex -lflite -lm -lasound -lflite_cmu_us_slt -lpython3.7m
+
+
+clean:
+	rm -f flite.o flite.so flite.c flite.c
+
+test:
+	rm -f test.wav
+	python -c "import flite;flite.init();flite.say('power 10 in two,! one,!  two!')"
+	python -c "import flite;flite.init();flite.say('power 10 in two,! one,!  two!', voice='slt')"
